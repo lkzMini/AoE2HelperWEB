@@ -24,7 +24,7 @@ Una aplicación web simple y ligera diseñada para ayudar a jugadores (NOVATOS P
 
 ## Despliegue
 
-La aplicación está desplegada en Netlify y puede ser accedida en [[Este link!](https://aoe2-helper.netlify.app/)]
+La aplicación está desplegada en Netlify y puede ser accedida en [Este link!](https://aoe2-helper.netlify.app/)
 
 ## Contribuciones
 
