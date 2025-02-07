@@ -157,3 +157,54 @@ select {
 ::-webkit-scrollbar-thumb:hover {
   background-color: #777;
 }
+
+/* Estilos para las pestañas */
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tab-button {
+  padding: 10px 20px;
+  background-color: #242424;
+  border: none;
+  border-radius: 8px;
+  color: #E0E0E0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab-button.active {
+  background-color: #BB86FC;
+  color: #1E1E1E;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Estilos para los build orders */
+.build-steps {
+  list-style-position: inside;
+  padding-left: 0;
+}
+
+.build-steps li {
+  margin-bottom: 8px;
+  padding: 8px;
+  background-color: #1F1F1F;
+  border-radius: 4px;
+}
+
+.build-notes {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #2A2A2A;
+  border-radius: 4px;
+  border-left: 4px solid #BB86FC;
+}

@@ -2,14 +2,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const selectCivilizacion = document.getElementById('civilizacion-select');
   const infoBox = document.getElementById('informacion-civilizacion');
 
-  // Ruta relativa al archivo data.json
-  const dataPath = './data.json';
-
-  // Cargar los datos del archivo JSON
-  fetch(dataPath)
+  // Cargar los datos de civilizaciones
+  fetch('/data.json')
     .then(response => {
       if (!response.ok) {
-        throw new Error('Error al cargar el archivo JSON.');
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
       return response.json();
     })
@@ -48,7 +45,77 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     })
     .catch(error => {
-      console.error('Error al cargar los datos:', error);
+      console.error('Error específico al cargar data.json:', error);
       infoBox.innerHTML = '<p>Error al cargar las civilizaciones.</p>';
+    });
+
+  // Agregar manejo de pestañas
+  const tabButtons = document.querySelectorAll('.tab-button');
+  const tabContents = document.querySelectorAll('.tab-content');
+  const selectBuild = document.getElementById('build-select');
+  const infoBoxBuild = document.getElementById('informacion-build');
+
+  // Manejo de pestañas
+  tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const tabId = button.dataset.tab;
+      
+      // Actualizar botones
+      tabButtons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+      
+      // Actualizar contenido
+      tabContents.forEach(content => {
+        content.classList.remove('active');
+        if (content.id === tabId) {
+          content.classList.add('active');
+        }
+      });
+    });
+  });
+
+  // Cargar datos de build orders
+  fetch('/build-orders.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      data.forEach(build => {
+        const option = document.createElement('option');
+        option.value = build.nombre;
+        option.textContent = build.nombre;
+        selectBuild.appendChild(option);
+      });
+
+      selectBuild.addEventListener('change', () => {
+        const selectedBuild = selectBuild.value;
+
+        if (!selectedBuild) {
+          infoBoxBuild.innerHTML = '<p>Selecciona un Build Order para ver los pasos.</p>';
+          return;
+        }
+
+        const buildData = data.find(build => build.nombre === selectedBuild);
+
+        if (buildData) {
+          infoBoxBuild.innerHTML = `
+            <h2>${buildData.nombre}</h2>
+            <p>${buildData.descripcion}</p>
+            <ol class="build-steps">
+              ${buildData.pasos.map(paso => `<li>${paso}</li>`).join('')}
+            </ol>
+            <div class="build-notes">
+              <strong>Notas:</strong> ${buildData.notas}
+            </div>
+          `;
+        }
+      });
+    })
+    .catch(error => {
+      console.error('Error específico al cargar build-orders.json:', error);
+      infoBoxBuild.innerHTML = '<p>Error al cargar los build orders.</p>';
     });
 });

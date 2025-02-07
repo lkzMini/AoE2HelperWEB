@@ -1,0 +1,50 @@
+[
+  {
+    "nombre": "Fast Castle (26+2)",
+    "descripcion": "Build order estándar para llegar a Castillos rápidamente con buena economía.",
+    "pasos": [
+      "6 aldeanos a ovejas",
+      "3 a madera",
+      "1 a jabalí",
+      "4 a bayas",
+      "1 a jabalí",
+      "2 a granjas",
+      "3 a oro",
+      "5 a granjas",
+      "Construir Mercado y Herrería mientras sube",
+      "Subir a Castillos apenas sea posible"
+    ],
+    "notas": "Tiempo estimado: 16:00 - 16:30. Ideal para civilizaciones con bonus económicos."
+  },
+  {
+    "nombre": "MAA into Archers",
+    "descripcion": "Build order agresivo que combina presión temprana con milicia y transición a arqueros.",
+    "pasos": [
+      "6 aldeanos a ovejas",
+      "4 a madera",
+      "2 a jabalí",
+      "2 a oro",
+      "Resto a comida",
+      "Crear 3 milicia",
+      "Subir a Feudal",
+      "Construir galería de tiro",
+      "Transicionar a arqueros"
+    ],
+    "notas": "Mantén la presión constante. La milicia debe molestar la economía enemiga mientras transicionas a arqueros."
+  },
+  {
+    "nombre": "Scout Rush",
+    "descripcion": "Build order clásico para presionar con exploradores en Feudal.",
+    "pasos": [
+      "6 aldeanos a ovejas",
+      "3 a madera",
+      "4 a bayas",
+      "2 a jabalí",
+      "Resto a comida",
+      "Construir establo mientras sube",
+      "Producir exploradores constantemente",
+      "Mantener la producción de aldeanos"
+    ],
+    "notas": "Ideal para civilizaciones con bonus de caballería. Prioriza el daño económico sobre las bajas militares."
+  }
+]

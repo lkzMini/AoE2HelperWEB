@@ -10,15 +10,35 @@
   <div class="container">
     <h1>Age of Empires 2 - Guía rápida</h1>
     
-    <div class="select-container">
-      <label for="civilizacion-select">Selecciona la civilización rival:</label>
-      <select id="civilizacion-select">
-        <option value="">-- Selecciona una civilización --</option>
-      </select>
+    <div class="tabs">
+      <button class="tab-button active" data-tab="civilizaciones">Civilizaciones</button>
+      <button class="tab-button" data-tab="builds">Build Orders</button>
     </div>
-    
-    <div id="informacion-civilizacion" class="info-box">
-      <p>Selecciona una civilización para ver sus estrategias.</p>
+
+    <div id="civilizaciones" class="tab-content active">
+      <div class="select-container">
+        <label for="civilizacion-select">Selecciona la civilización rival:</label>
+        <select id="civilizacion-select">
+          <option value="">-- Selecciona una civilización --</option>
+        </select>
+      </div>
+      
+      <div id="informacion-civilizacion" class="info-box">
+        <p>Selecciona una civilización para ver sus estrategias.</p>
+      </div>
+    </div>
+
+    <div id="builds" class="tab-content">
+      <div class="select-container">
+        <label for="build-select">Selecciona un Build Order:</label>
+        <select id="build-select">
+          <option value="">-- Selecciona un Build Order --</option>
+        </select>
+      </div>
+      
+      <div id="informacion-build" class="info-box">
+        <p>Selecciona un Build Order para ver los pasos.</p>
+      </div>
     </div>
   </div>
 </body>
