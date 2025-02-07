@@ -1,5 +1,7 @@
 # AOE2 Helper
 
+## Español
+
 Una aplicación web simple y ligera diseñada para ayudar a jugadores (NOVATOS PRINCIPALMENTE) de Age of Empires 2 DE con información rápida sobre civilizaciones y build orders.
 
 ## Características
@@ -36,3 +38,41 @@ Si quieres ayudarme a pagar el internet, es bienvenido :3 [Donate](https://ko-fi
 ## Licencia
 
 Este proyecto está bajo la Licencia GPL v3. 
+
+## English
+
+A lightweight web application designed to help Age of Empires 2 DE players (MAINLY BEGINNERS) with quick information about civilizations and build orders.
+
+### Features
+
+- **Civilization Guide**: Quick information about strategies and counter-strategies for each civilization
+- **Build Orders**: Collection of common and effective build orders
+- **Responsive Design**: Works on mobile and desktop devices
+- **Dark Mode**: Dark theme interface for better readability
+
+### Usage
+
+1. Select the "Civilizations" tab to see tips on how to play against each civilization
+2. Select the "Build Orders" tab to see step-by-step guides for different strategies
+3. Use the dropdown menu to select the civilization or build order you're interested in
+
+### Technologies
+
+- HTML5
+- CSS3
+- Vanilla JavaScript
+- JSON for data storage
+
+### Deployment
+
+The application is deployed on Netlify and can be accessed at [LINK](https://aoe2-helper.netlify.app/)
+
+### Contributions
+
+Suggestions and contributions are welcome. If you find any errors or have any suggestions, feel free to open an issue or submit a pull request.
+
+If you wanna help me pay my Internet connection :3 [Donate](https://ko-fi.com/lkzmini)
+
+### License
+
+This project is under the GPL v3 License.
