@@ -1,2 +1,7 @@
 [build]
-  publish = "./"
+  publish = "/"
+
+[[headers]]
+  for = "/*.json"
+    [headers.values]
+    Access-Control-Allow-Origin = "*"
