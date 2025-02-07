@@ -5,11 +5,11 @@ body {
   font-family: Arial, sans-serif; /* Ajusta según la fuente usada */
   margin: 0;
   padding: 0;
-  overflow: hidden; /* Evita el scroll en el body */
-  height: 100vh;
+  min-height: 100vh; /* Cambiado de height a min-height */
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow-y: auto; /* Permitir scroll vertical */
 }
 
 /* Enlaces */
@@ -55,13 +55,13 @@ input:focus, textarea:focus {
 /* Contenedor principal */
 .container {
   width: calc(100% - 20px);
-  height: calc(100% - 20px);
+  min-height: calc(100vh - 20px); /* Cambiado de height a min-height */
   margin: 10px;
   padding: 15px;
   background-color: #1E1E1E;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
+  overflow-y: auto; /* Permitir scroll dentro del contenedor */
   display: flex;
   flex-direction: column;
 }
@@ -106,6 +106,7 @@ tr:nth-child(even) {
   overflow-y: auto;
   flex-grow: 1;
   margin-bottom: 10px;
+  -webkit-overflow-scrolling: touch; /* Mejorar scroll en iOS */
 }
 
 /* Estilos responsive para el texto */
@@ -207,4 +208,23 @@ select {
   background-color: #2A2A2A;
   border-radius: 4px;
   border-left: 4px solid #BB86FC;
+}
+
+/* Agregar media query para dispositivos móviles */
+@media screen and (max-width: 768px) {
+  body {
+    align-items: flex-start; /* Alinear desde arriba en móviles */
+    overflow-y: auto;
+  }
+
+  .container {
+    margin: 0;
+    width: 100%;
+    min-height: 100vh;
+    border-radius: 0;
+  }
+
+  .info-box {
+    max-height: none; /* Eliminar altura máxima en móviles */
+  }
 }

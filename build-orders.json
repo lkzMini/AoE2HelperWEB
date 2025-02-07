@@ -1,7 +1,7 @@
 [
   {
-    "nombre": "Fast Castle (26+2)",
-    "descripcion": "Build order estándar para llegar a Castillos rápidamente con buena economía.",
+    "nombre": "Fast Castle (26+2) (Incompleto aún)",
+    "descripcion": "En construcción, ignorar",
     "pasos": [
       "6 aldeanos a ovejas",
       "3 a madera",
@@ -14,23 +14,32 @@
       "Construir Mercado y Herrería mientras sube",
       "Subir a Castillos apenas sea posible"
     ],
-    "notas": "Tiempo estimado: 16:00 - 16:30. Ideal para civilizaciones con bonus económicos."
+    "notas": "En construcción, no utilizar."
   },
   {
-    "nombre": "MAA into Archers",
-    "descripcion": "Build order agresivo que combina presión temprana con milicia y transición a arqueros.",
+    "nombre": "Fast Feudal into Archers (para TG)",
+    "descripcion": "Build order optimizado para una edad Feudal rápida con transición a arqueros. Puede variar según la civ (levemente).",
     "pasos": [
       "6 aldeanos a ovejas",
-      "4 a madera",
-      "2 a jabalí",
-      "2 a oro",
-      "Resto a comida",
-      "Crear 3 milicia",
-      "Subir a Feudal",
-      "Construir galería de tiro",
-      "Transicionar a arqueros"
+      "3 aldeanos a madera",
+      "Aldeano 10 atrae jabalí al TC",
+      "Aldeano 11 construye casa",
+      "Aldeano 12 construye molino",
+      "Aldeano 11 + aldeano 13 se unen a las bayas",
+      "Aldeanos 14 y 15 a ovejas/jabalíes/ciervos",
+      "Aldeanos 16, 17 y 18 a madera (total 6)",
+      "Aldeano 19 construye segundo maderero",
+      "Un aldeano del Molino, construye Cuartel + Casa",
+      "Clic Telar y Feudal",
+      "Al clickear Feudal: +5 aldeanos a nuevo bosque (total 11 en madera)",
+      "2 aldeanos de las ovejas, se mueven al oro",
+      "Investigar Hacha de doble filo y completar 7-9 en oro",
+      "Construir doble arquería con aldeanos de frutas u ovejas",
+      "Los 2 aldeanos que construyeron arquerías, ahora wallean",
+      "Producir arqueros de forma constante pero controlada",
+      "Construir herrería + mejora de daño para arqueros"
     ],
-    "notas": ""
+    "notas": "Si eres punta, la prioridad es atacar temprano a tu rival, para tomar la iniciativa. Es obligatorio sacar un lancero para acompañar a los arqueros hasta que tu compañero llegue a auxiliar."
   },
   {
     "nombre": "Fast Feudal into Scouts",
