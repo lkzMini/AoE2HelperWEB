@@ -30,21 +30,30 @@
       "Construir galería de tiro",
       "Transicionar a arqueros"
     ],
-    "notas": "Mantén la presión constante. La milicia debe molestar la economía enemiga mientras transicionas a arqueros."
+    "notas": ""
   },
   {
-    "nombre": "Scout Rush",
-    "descripcion": "Build order clásico para presionar con exploradores en Feudal.",
+    "nombre": "Fast Feudal into Scouts",
+    "descripcion": "Build order optimizado para una edad Feudal rápida con transición a exploradores. Ideal para civilizaciones con bonus de caballería o economía temprana.",
     "pasos": [
       "6 aldeanos a ovejas",
-      "3 a madera",
-      "4 a bayas",
-      "2 a jabalí",
-      "Resto a comida",
-      "Construir establo mientras sube",
-      "Producir exploradores constantemente",
-      "Mantener la producción de aldeanos"
+      "2 aldeanos a madera",
+      "Aldeano 9 atrae jabalí al TC",
+      "Aldeano 10 se une al jabalí",
+      "Aldeano 11 construye casa",
+      "Aldeano 12 + aldeano 11 construyen molino",
+      "Aldeanos 13 y 14 a bayas (total 4)",
+      "Aldeanos 15 y 16 a ovejas/jabalíes/ciervos",
+      "Aldeanos 17 y 18 a madera (total 4)",
+      "Aldeano 19 comienza a wallear y construye Cuartel y Casa",
+      "Clic a Feudal (preferiblemente sin Telar)",
+      "Al clickear Feudal: +5 aldeanos a nuevo bosque (total 9 en madera)",
+      "2 aldeanos más a madera debajo del TC (total 11)",
+      "Investigar Hacha Doble y Collera",
+      "Construir Establo",
+      "Reasignar últimos 2 aldeanos de madera a comida",
+      "Comenzar producción de exploradores"
     ],
-    "notas": "Ideal para civilizaciones con bonus de caballería. Prioriza el daño económico sobre las bajas militares."
+    "notas": "Si eres pocket, es obligatorio atraer ciervos al TC. No dejes de producir ejército hasta tener muralla completa. Los últimos aldeanos en madera vuelven a comida una vez investigadas las tecnologías y construido el establo."
   }
 ]
