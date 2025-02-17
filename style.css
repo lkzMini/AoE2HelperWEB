@@ -5,11 +5,11 @@ body {
   font-family: Arial, sans-serif; /* Ajusta según la fuente usada */
   margin: 0;
   padding: 0;
-  min-height: 100vh; /* Cambiado de height a min-height */
+  overflow: hidden; /* Evita el scroll en el body */
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow-y: auto; /* Permitir scroll vertical */
 }
 
 /* Enlaces */
@@ -55,13 +55,13 @@ input:focus, textarea:focus {
 /* Contenedor principal */
 .container {
   width: calc(100% - 20px);
-  min-height: calc(100vh - 20px); /* Cambiado de height a min-height */
+  height: calc(100% - 20px);
   margin: 10px;
   padding: 15px;
   background-color: #1E1E1E;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  overflow-y: auto; /* Permitir scroll dentro del contenedor */
+  overflow: hidden;
   display: flex;
   flex-direction: column;
 }
@@ -106,7 +106,6 @@ tr:nth-child(even) {
   overflow-y: auto;
   flex-grow: 1;
   margin-bottom: 10px;
-  -webkit-overflow-scrolling: touch; /* Mejorar scroll en iOS */
 }
 
 /* Estilos responsive para el texto */
@@ -159,72 +158,26 @@ select {
   background-color: #777;
 }
 
-/* Estilos para las pestañas */
-.tabs {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+/* Estilo para el selector de idioma */
+.language-selector {
+  position: absolute; /* Posiciona el contenedor de forma absoluta */
+  top: 10px; /* Espacio desde la parte superior */
+  right: 10px; /* Espacio desde la derecha */
+  background-color: #1E1E1E; /* Fondo oscuro para el recuadro */
+  padding: 10px; /* Espaciado interno */
+  border-radius: 5px; /* Bordes redondeados */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra para el recuadro */
 }
 
-.tab-button {
-  padding: 10px 20px;
-  background-color: #242424;
-  border: none;
-  border-radius: 8px;
-  color: #E0E0E0;
-  cursor: pointer;
-  transition: all 0.3s ease;
+.language-selector label {
+  color: #E0E0E0; /* Color del texto */
+  margin-right: 5px; /* Espacio entre el label y el select */
 }
 
-.tab-button.active {
-  background-color: #BB86FC;
-  color: #1E1E1E;
-}
-
-.tab-content {
-  display: none;
-}
-
-.tab-content.active {
-  display: block;
-}
-
-/* Estilos para los build orders */
-.build-steps {
-  list-style-position: inside;
-  padding-left: 0;
-}
-
-.build-steps li {
-  margin-bottom: 8px;
-  padding: 8px;
-  background-color: #1F1F1F;
-  border-radius: 4px;
-}
-
-.build-notes {
-  margin-top: 15px;
-  padding: 10px;
-  background-color: #2A2A2A;
-  border-radius: 4px;
-  border-left: 4px solid #BB86FC;
-}
-
-/* Agregar media query para dispositivos móviles */
-@media screen and (max-width: 768px) {
-  body {
-    align-items: flex-start; /* Alinear desde arriba en móviles */
-    overflow-y: auto;
-  }
-
-  .container {
-    margin: 0;
-    width: 100%;
-    min-height: 100vh;
-    border-radius: 0;
-  }
-
-  .info-box {
-    max-height: none; /* Eliminar altura máxima en móviles */
-  }
+.language-selector select {
+  background-color: #1F1F1F; /* Fondo del select */
+  color: #E0E0E0; /* Color del texto */
+  border: 1px solid #333; /* Borde del select */
+  border-radius: 5px; /* Bordes redondeados */
+  padding: 5px; /* Espaciado interno */
 }

@@ -1,121 +1,120 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const selectCivilizacion = document.getElementById('civilizacion-select');
-  const infoBox = document.getElementById('informacion-civilizacion');
+const fs = require('fs');
+const path = require('path');
 
-  // Cargar los datos de civilizaciones
-  fetch('/data.json')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then(data => {
-      // Ordenar el array de civilizaciones alfabéticamente
-      data.sort((a, b) => a.civilizacion.localeCompare(b.civilizacion, 'es'));
+let currentLanguage = 'es'; // Idioma por defecto
+const translationsPath = path.join(__dirname, 'translations.json');
+const dataPath = path.join(__dirname, 'data.json');
+const buildOrdersPath = path.join(__dirname, 'build-orders.json');
+const extraTipsPath = path.join(__dirname, 'extra-tips.json');
+let translations = {};
+let civilizationsData = [];
+let buildOrdersData = [];
+let extraTipsData = [];
 
-      // Rellenar el menú desplegable con las civilizaciones ordenadas
-      data.forEach(civ => {
-        const option = document.createElement('option');
-        option.value = civ.civilizacion;
-        option.textContent = civ.civilizacion;
-        selectCivilizacion.appendChild(option);
-      });
+// Cargar traducciones
+try {
+  const jsonData = fs.readFileSync(translationsPath, 'utf8');
+  translations = JSON.parse(jsonData);
+} catch (err) {
+  console.error('Error al cargar las traducciones:', err);
+}
 
-      // Mostrar la información al seleccionar una civilización
-      selectCivilizacion.addEventListener('change', () => {
-        const selectedCiv = selectCivilizacion.value;
+// Cargar datos de civilizaciones
+try {
+  const jsonData = fs.readFileSync(dataPath, 'utf8');
+  civilizationsData = JSON.parse(jsonData);
+} catch (err) {
+  console.error('Error al cargar los datos de civilizaciones:', err);
+}
 
-        if (!selectedCiv) {
-          infoBox.innerHTML = '<p>Selecciona una civilización para ver sus estrategias.</p>';
-          return;
-        }
+// Cargar datos de build orders
+try {
+  const jsonData = fs.readFileSync(buildOrdersPath, 'utf8');
+  buildOrdersData = JSON.parse(jsonData);
+} catch (err) {
+  console.error('Error al cargar los datos de build orders:', err);
+}
 
-        const civData = data.find(civ => civ.civilizacion === selectedCiv);
+// Cargar datos de extra tips
+try {
+  const jsonData = fs.readFileSync(extraTipsPath, 'utf8');
+  extraTipsData = JSON.parse(jsonData);
+} catch (err) {
+  console.error('Error al cargar los datos de extra tips:', err);
+}
 
-        if (civData) {
-          infoBox.innerHTML = `
-            <h2>${civData.civilizacion}</h2>
-            <p><strong>Feudal:</strong> ${civData.estrategias.feudal}</p>
-            <p><strong>Castillos:</strong> ${civData.estrategias.castillos}</p>
-            <p><strong>Imperial:</strong> ${civData.estrategias.imperial}</p>
-            <p><strong>Respuesta:</strong> ${civData.respuesta}</p>
-          `;
-        }
-      });
-    })
-    .catch(error => {
-      console.error('Error específico al cargar data.json:', error);
-      infoBox.innerHTML = '<p>Error al cargar las civilizaciones.</p>';
-    });
+// Función para actualizar el texto en la aplicación
+function updateText() {
+  document.title = translations[currentLanguage].title;
+  document.getElementById('civilizaciones-tab').textContent = translations[currentLanguage].civilizations;
+  document.getElementById('build-orders-tab').textContent = translations[currentLanguage].buildOrders;
+  document.getElementById('extra-tips-tab').textContent = translations[currentLanguage].extraTips;
+  document.getElementById('civilizacion-select').previousElementSibling.textContent = translations[currentLanguage].selectCivilization;
+  document.getElementById('informacion-civilizacion').innerHTML = `<p>${translations[currentLanguage].selectTip}</p>`;
+}
 
-  // Agregar manejo de pestañas
-  const tabButtons = document.querySelectorAll('.tab-button');
-  const tabContents = document.querySelectorAll('.tab-content');
-  const selectBuild = document.getElementById('build-select');
-  const infoBoxBuild = document.getElementById('informacion-build');
+// Llamar a la función para actualizar el texto
+updateText();
 
-  // Manejo de pestañas
-  tabButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const tabId = button.dataset.tab;
-      
-      // Actualizar botones
-      tabButtons.forEach(btn => btn.classList.remove('active'));
-      button.classList.add('active');
-      
-      // Actualizar contenido
-      tabContents.forEach(content => {
-        content.classList.remove('active');
-        if (content.id === tabId) {
-          content.classList.add('active');
-        }
-      });
-    });
-  });
-
-  // Cargar datos de build orders
-  fetch('/build-orders.json')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then(data => {
-      data.forEach(build => {
-        const option = document.createElement('option');
-        option.value = build.nombre;
-        option.textContent = build.nombre;
-        selectBuild.appendChild(option);
-      });
-
-      selectBuild.addEventListener('change', () => {
-        const selectedBuild = selectBuild.value;
-
-        if (!selectedBuild) {
-          infoBoxBuild.innerHTML = '<p>Selecciona un Build Order para ver los pasos.</p>';
-          return;
-        }
-
-        const buildData = data.find(build => build.nombre === selectedBuild);
-
-        if (buildData) {
-          infoBoxBuild.innerHTML = `
-            <h2>${buildData.nombre}</h2>
-            <p>${buildData.descripcion}</p>
-            <ol class="build-steps">
-              ${buildData.pasos.map(paso => `<li>${paso}</li>`).join('')}
-            </ol>
-            <div class="build-notes">
-              <strong>Notas:</strong> ${buildData.notas}
-            </div>
-          `;
-        }
-      });
-    })
-    .catch(error => {
-      console.error('Error específico al cargar build-orders.json:', error);
-      infoBoxBuild.innerHTML = '<p>Error al cargar los build orders.</p>';
-    });
+// Evento para cambiar el idioma
+document.getElementById('language-select').addEventListener('change', (event) => {
+  currentLanguage = event.target.value;
+  updateText(); // Actualizar el texto al nuevo idioma
 });
+
+// Mostrar información de civilizaciones
+document.getElementById('civilizaciones-tab').addEventListener('click', function() {
+  document.getElementById('civilizaciones-content').style.display = 'block';
+  document.getElementById('build-orders-content').style.display = 'none';
+  document.getElementById('extra-tips-content').style.display = 'none';
+});
+
+// Mostrar información de build orders
+document.getElementById('build-orders-tab').addEventListener('click', function() {
+  document.getElementById('civilizaciones-content').style.display = 'none';
+  document.getElementById('build-orders-content').style.display = 'block';
+  document.getElementById('extra-tips-content').style.display = 'none';
+});
+
+// Mostrar información de extra tips
+document.getElementById('extra-tips-tab').addEventListener('click', function() {
+  document.getElementById('civilizaciones-content').style.display = 'none';
+  document.getElementById('build-orders-content').style.display = 'none';
+  document.getElementById('extra-tips-content').style.display = 'block';
+});
+
+// Mostrar información de civilizaciones
+document.getElementById('civilizacion-select').addEventListener('change', () => {
+  const selectedCiv = document.getElementById('civilizacion-select').value;
+
+  if (!selectedCiv) {
+    document.getElementById('informacion-civilizacion').innerHTML = '<p>Selecciona una civilización para ver sus estrategias.</p>';
+    return;
+  }
+
+  const civData = civilizationsData.find(civ => civ.civilizacion === selectedCiv);
+
+  if (civData) {
+    document.getElementById('informacion-civilizacion').innerHTML = `
+      <h2>${civData.civilizacion}</h2>
+      <p><strong>Feudal:</strong> ${civData.estrategias.feudal}</p>
+      <p><strong>Castillos:</strong> ${civData.estrategias.castillos}</p>
+      <p><strong>Imperial:</strong> ${civData.estrategias.imperial}</p>
+      <p><strong>Respuesta:</strong> ${civData.respuesta}</p>
+    `;
+  }
+});
+
+// Llenar el menú desplegable de civilizaciones
+function populateCivilizationSelect() {
+  const civilizationSelect = document.getElementById('civilizacion-select');
+  civilizationsData.forEach(civ => {
+    const option = document.createElement('option');
+    option.value = civ.civilizacion;
+    option.textContent = civ.civilizacion;
+    civilizationSelect.appendChild(option);
+  });
+}
+
+// Llamar a la función para llenar el menú desplegable
+populateCivilizationSelect();
